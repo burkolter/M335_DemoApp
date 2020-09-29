@@ -5,6 +5,7 @@ var geolocationService = (function() {
     // current GPS coordinates
     //
     const onSuccess = function(position) {
+        console.log(position);
         alert('Latitude: ' + position.coords.latitude + '\n' +
             'Longitude: ' + position.coords.longitude + '\n' +
             'Altitude: ' + position.coords.altitude + '\n' +
@@ -18,6 +19,7 @@ var geolocationService = (function() {
     // onError Callback receives a PositionError object
     //
     const onError = function onError(error) {
+        console.log(error);
         alert('code: ' + error.code + '\n' +
             'message: ' + error.message + '\n');
     }
