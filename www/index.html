@@ -53,6 +53,7 @@
             <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
             <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#audioView" role="tab" aria-controls="v-pills-profile" aria-selected="false">Audio</a>
             <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#itemView" role="tab" aria-controls="v-pills-messages" aria-selected="false">Firebase</a>
+            <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#authView" role="tab" aria-controls="v-pills-messages" aria-selected="false">Auth</a>
         </div>
 
         <div class="tab-content" id="v-pills-tabContent">
@@ -80,6 +81,24 @@
                     <button id="writeItem" onclick="storageService.writeItem('/demo/fixedpath/item', {id: 1, ts: new Date().toString()});">set Fixed Item</button>
                 </div>
             </div>
+            <div class="tab-pane fade" id="authView" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                <div class="jumbotron">
+                    <h1>Login</h1>
+                    <p>Use e-mail auth to log-in</p>
+                    <form id="authForm">
+                        <div class="form-group">
+                            <label for="authEmail">Email</label>
+                            <input type="email" class="form-control" id="authEmail" aria-describedby="emailHelp" placeholder="Mailadresse eingeben">
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="authPassword">Passwort</label>
+                            <input type="password" class="form-control" id="authPassword" placeholder="Passwort">
+                        </div>
+                    </form>
+                    <button id="logInButton" onclick="authView.runLogin();">Anmelden</button>
+                </div>
+            </div>
         </div>
 
 
@@ -92,11 +111,11 @@
         <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-auth.js"></script>
 
         <!-- custom javascript -->
-        <!-- call first to initalize app-->
+        <!-- call first to initalize firebase-->
         <script src="js/storageService.js"></script>
-
         <script src="js/authService.js"></script>
         <script src="js/geolocationService.js"></script>
+        <script src="js/authView.js"></script>
         <script src="js/audioView.js"></script>
         <script src="js/index.js"></script>
         <!-- generated on the fly. as last include to make sure app-specific javascript is prepared -->

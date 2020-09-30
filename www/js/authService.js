@@ -16,7 +16,7 @@ var authService = (function() {
     }
 })();
 
-authService.signIn('dominik.burkolter@gila-solutions.ch', 'Test12345')
+authService.signIn('dominik.burkolter@gila-solutions.ch', 'Test12345 asfasdfasd')
     .then(() => {
         console.log("successfully logged in");
     })
