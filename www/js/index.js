@@ -27,5 +27,5 @@ function onDeviceReady() {
     console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
     document.getElementById('deviceReady').innerText = "Device loaded";
 
-    geolocationService.printPosition();
+    geolocationView.updateInitPosition();
 }

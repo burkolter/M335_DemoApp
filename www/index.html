@@ -50,22 +50,24 @@
         <p id="deviceReady">Device is Loading</p>
 
         <div class="nav flex-row nav-pills" id="v-pills-tab" role="tablist" aria-orientation="horizontal">
-            <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
+            <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#geolocationView" role="tab" aria-controls="v-pills-home" aria-selected="true">Geolocation</a>
             <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#audioView" role="tab" aria-controls="v-pills-profile" aria-selected="false">Audio</a>
             <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#itemView" role="tab" aria-controls="v-pills-messages" aria-selected="false">Firebase</a>
             <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#authView" role="tab" aria-controls="v-pills-messages" aria-selected="false">Auth</a>
         </div>
 
         <div class="tab-content" id="v-pills-tabContent">
-            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+            <div class="tab-pane fade show active" id="geolocationView" role="tabpanel" aria-labelledby="v-pills-home-tab">
                 <div class="jumbotron">
-                    <h1>Home Page Content</h1>
-                    <p> Blah, blah, blah...</p>
+                    <h1>Geolocation</h1>
+                    <p> current coordinates at initialisation
+                        <div id="coordsInit">(loading)</div>
+                    </p>
                 </div>
             </div>
             <div class="tab-pane fade" id="audioView" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                 <div class="jumbotron">
-                    <audio id="audioItem">
+                    <audio id="audioItem"> <!--Variante 1: als HTML-Tag audio Datei bereitstellen, Variante 2 im Code der audioView -->
                         <source src="media/sos-morse-code_daniel-simion.mp3" type="audio/mpeg">
                       Your browser does not support the audio element.
                       </audio>
@@ -115,6 +117,7 @@
         <script src="js/storageService.js"></script>
         <script src="js/authService.js"></script>
         <script src="js/geolocationService.js"></script>
+        <script src="js/geolocationView.js"></script>
         <script src="js/authView.js"></script>
         <script src="js/audioView.js"></script>
         <script src="js/index.js"></script>

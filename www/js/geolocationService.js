@@ -1,40 +1,23 @@
 var geolocationService = (function() {
 
-    // onSuccess Callback
-    // This method accepts a Position object, which contains the
-    // current GPS coordinates
-    //
-    const onSuccess = function(position) {
-        console.log(position);
-        alert('Latitude: ' + position.coords.latitude + '\n' +
-            'Longitude: ' + position.coords.longitude + '\n' +
-            'Altitude: ' + position.coords.altitude + '\n' +
-            'Accuracy: ' + position.coords.accuracy + '\n' +
-            'Altitude Accuracy: ' + position.coords.altitudeAccuracy + '\n' +
-            'Heading: ' + position.coords.heading + '\n' +
-            'Speed: ' + position.coords.speed + '\n' +
-            'Timestamp: ' + position.timestamp + '\n');
-    };
-
-    // onError Callback receives a PositionError object
-    //
-    const onError = function onError(error) {
-        console.log(error);
-        alert('code: ' + error.code + '\n' +
-            'message: ' + error.message + '\n');
-    }
-
-
-    const printPosition = function() {
+    const getPosition = function() {
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(onSuccess, onError);
+            // call callback API and make a Promise out of it
+            return new Promise((resolve, reject) => {
+                navigator.geolocation.getCurrentPosition((location) => {
+                    resolve(location);
+                }, (error) => {
+                    reject;
+                })
+            });
         } else {
-            alert('geolocation not available');
+            return new Promise((resolve, reject) => {
+                reject("geolocation not available");
+            });
         }
-
     }
 
     return {
-        printPosition
+        getPosition
     }
 })();

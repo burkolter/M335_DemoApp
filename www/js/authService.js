@@ -15,14 +15,3 @@ var authService = (function() {
         signOut
     }
 })();
-
-authService.signIn('dominik.burkolter@gila-solutions.ch', 'Test12345 asfasdfasd')
-    .then(() => {
-        console.log("successfully logged in");
-    })
-    .catch((error) => {
-        // Handle Errors here.
-        //var errorCode = error.code;
-        //var errorMessage = error.message;
-        console.warn("failure logging in", error);
-    });
