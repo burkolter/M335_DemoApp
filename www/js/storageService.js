@@ -67,6 +67,11 @@ var storageService = (function() {
         });
     };
 
+    const unsubscribeItem = function(path) {
+        let ref = dbObj.ref(path);
+        ref.off();
+    }
+
     // initialize
     connectToFirebase();
 
@@ -87,6 +92,7 @@ var storageService = (function() {
         writeItem,
         readItems,
         removePath,
-        subscribeItem
+        subscribeItem,
+        unsubscribeItem
     };
 })();
