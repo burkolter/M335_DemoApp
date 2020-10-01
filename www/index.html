@@ -80,7 +80,11 @@
                 <div class="jumbotron">
                     <h1>Firebase Example</h1>
                     <p>Write an item to firebase</p>
-                    <button id="writeItem" onclick="storageService.writeItem('/demo/fixedpath/item', {id: 1, ts: new Date().toString()});">set Fixed Item</button>
+                    <button id="writeItem" onclick="itemView.writeFixedPath();">set Fixed Item</button>
+                    <p>listening to above item:
+                        <div id="updateTarget">(not available)</div>
+                    </p>
+
                 </div>
             </div>
             <div class="tab-pane fade" id="authView" role="tabpanel" aria-labelledby="v-pills-messages-tab">
@@ -118,11 +122,14 @@
         <script src="js/authService.js"></script>
         <script src="js/geolocationService.js"></script>
         <script src="js/geolocationView.js"></script>
+        <script src="js/itemView.js"></script>
         <script src="js/authView.js"></script>
         <script src="js/audioView.js"></script>
         <script src="js/index.js"></script>
         <!-- generated on the fly. as last include to make sure app-specific javascript is prepared -->
         <script src="cordova.js"></script>
+
+
     </body>
 
 </html>
