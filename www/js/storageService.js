@@ -58,7 +58,7 @@ var storageService = (function() {
     };
 
 
-    const subscribeItems = function(path, changeCallback) {
+    const subscribeItem = function(path, changeCallback) {
         let ref = dbObj.ref(path);
 
         ref.on('value', (snapshot) => {
@@ -71,16 +71,22 @@ var storageService = (function() {
     connectToFirebase();
 
     // Demo-Usage
+    /*
     writeItem("/demo/test/bla", { id: 10, ts: new Date().toString() });
     readItems("/demo/test/bla").then((items) => {
         console.log("data received", items);
     });
+    storageService.subscribeItem("/demo/test/bla", (item) => {
+            console.log("update received", item);
+            ...
+        });
+    */
 
     // public
     return {
         writeItem,
         readItems,
         removePath,
-        subscribeItems
+        subscribeItem
     };
 })();

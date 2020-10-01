@@ -1,7 +1,6 @@
 var itemView = (function() {
 
     const fixedPath = '/demo/fixedpath/item';
-
     const writeFixedPath = function() {
         storageService.writeItem(fixedPath, {
             id: 1,
@@ -10,7 +9,7 @@ var itemView = (function() {
     }
 
     const subscribeFixedPath = function() {
-        storageService.subscribeItems(fixedPath, (item) => {
+        storageService.subscribeItem(fixedPath, (item) => {
             console.log("update received", item);
             let updateTarget = document.getElementById("updateTarget");
             updateTarget.innerText = item.ts;
