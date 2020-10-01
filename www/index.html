@@ -30,104 +30,106 @@
             * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
                 * Enable inline JS: add 'unsafe-inline' to default-src
         
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' https://www.gstatic.com data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src 'self'; img-src 'self' data: content:;">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' ws: data: gap: 'unsafe-inline' 'unsafe-eval' https://www.gstatic.com https://*.firebaseio.com https://www.googleapis.com https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src 'self'; img-src
+            'self'; ">
 -->
-        <meta name="format-detection" content="telephone=no">
-        <meta name="msapplication-tap-highlight" content="no">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="color-scheme" content="light dark">
+        <meta name="format-detection " content="telephone=no ">
+        <meta name="msapplication-tap-highlight " content="no ">
+        <meta name="viewport " content="width=device-width, initial-scale=1, shrink-to-fit=no ">
+        <meta name="color-scheme " content="light dark ">
 
         <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet " href="css/bootstrap.min.css ">
         <!-- Custom CSS -->
-        <link rel="stylesheet" href="css/index.css">
+        <link rel="stylesheet " href="css/index.css ">
 
         <title>Hello World</title>
     </head>
 
     <body>
         <h1>Apache Cordova</h1>
-        <p id="deviceReady">Device is Loading</p>
+        <p id="deviceReady ">Device is Loading</p>
 
-        <div class="nav flex-row nav-pills" id="v-pills-tab" role="tablist" aria-orientation="horizontal">
-            <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#geolocationView" role="tab" aria-controls="v-pills-home" aria-selected="true">Geolocation</a>
-            <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#audioView" role="tab" aria-controls="v-pills-profile" aria-selected="false">Audio</a>
-            <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#itemView" role="tab" aria-controls="v-pills-messages" aria-selected="false">Firebase</a>
-            <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#authView" role="tab" aria-controls="v-pills-messages" aria-selected="false">Auth</a>
+        <div class="nav flex-row nav-pills " id="v-pills-tab " role="tablist " aria-orientation="horizontal ">
+            <a class="nav-link active " id="v-pills-home-tab " data-toggle="pill " href="#geolocationView " role="tab " aria-controls="v-pills-home " aria-selected="true ">Geolocation</a>
+            <a class="nav-link " id="v-pills-profile-tab " data-toggle="pill " href="#audioView " role="tab " aria-controls="v-pills-profile " aria-selected="false ">Audio</a>
+            <a class="nav-link " id="v-pills-messages-tab " data-toggle="pill " href="#itemView " role="tab " aria-controls="v-pills-messages " aria-selected="false ">Firebase</a>
+            <a class="nav-link " id="v-pills-messages-tab " data-toggle="pill " href="#authView " role="tab " aria-controls="v-pills-messages " aria-selected="false ">Auth</a>
         </div>
 
-        <div class="tab-content" id="v-pills-tabContent">
-            <div class="tab-pane fade show active" id="geolocationView" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                <div class="jumbotron">
+        <div class="tab-content " id="v-pills-tabContent ">
+            <div class="tab-pane fade show active " id="geolocationView " role="tabpanel " aria-labelledby="v-pills-home-tab ">
+                <div class="jumbotron ">
                     <h1>Geolocation</h1>
                     <p> current coordinates at initialisation
-                        <div id="coordsInit">(loading)</div>
+                        <div id="coordsInit ">(loading)</div>
                     </p>
                 </div>
             </div>
-            <div class="tab-pane fade" id="audioView" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                <div class="jumbotron">
-                    <audio id="audioItem"> <!--Variante 1: als HTML-Tag audio Datei bereitstellen, Variante 2 im Code der audioView -->
-                        <source src="media/sos-morse-code_daniel-simion.mp3" type="audio/mpeg">
+            <div class="tab-pane fade " id="audioView " role="tabpanel " aria-labelledby="v-pills-profile-tab ">
+                <div class="jumbotron ">
+                    <audio id="audioItem "> <!--Variante 1: als HTML-Tag audio Datei bereitstellen, Variante 2 im Code der audioView -->
+                        <source src="media/sos-morse-code_daniel-simion.mp3 " type="audio/mpeg ">
                       Your browser does not support the audio element.
                       </audio>
                     <h1>Playing audio example</h1>
                     <p>Play the morse-code</p>
-                    <button id="playAudioButton" onclick="audioView.playBeep();">Play</button>
+                    <button id="playAudioButton " onclick="audioView.playBeep(); ">Play</button>
                 </div>
             </div>
-            <div class="tab-pane fade" id="itemView" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-                <div class="jumbotron">
+            <div class="tab-pane fade " id="itemView " role="tabpanel " aria-labelledby="v-pills-messages-tab ">
+                <div class="jumbotron ">
                     <h1>Firebase Example</h1>
                     <p>Write an item to firebase</p>
-                    <button id="writeItem" onclick="itemView.writeFixedPath();">set Fixed Item</button>
+                    <button id="writeItem " onclick="itemView.writeFixedPath(); ">set Fixed Item</button>
                     <p>listening to above item:
-                        <div id="updateTarget">(not available)</div>
+                        <div id="updateTarget ">(not available)</div>
                     </p>
 
                 </div>
             </div>
-            <div class="tab-pane fade" id="authView" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-                <div class="jumbotron">
+            <div class="tab-pane fade " id="authView " role="tabpanel " aria-labelledby="v-pills-messages-tab ">
+                <div class="jumbotron ">
                     <h1>Login</h1>
                     <p>Use e-mail auth to log-in</p>
-                    <form id="authForm">
-                        <div class="form-group">
-                            <label for="authEmail">Email</label>
-                            <input type="email" class="form-control" id="authEmail" aria-describedby="emailHelp" placeholder="Mailadresse eingeben">
-                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    <form id="authForm ">
+                        <div class="form-group ">
+                            <label for="authEmail ">Email</label>
+                            <input type="email " class="form-control " id="authEmail " aria-describedby="emailHelp " placeholder="Mailadresse eingeben ">
+                            <small id="emailHelp " class="form-text text-muted ">We'll never share your email with anyone else.</small>
                         </div>
-                        <div class="form-group">
-                            <label for="authPassword">Passwort</label>
-                            <input type="password" class="form-control" id="authPassword" placeholder="Passwort">
+                        <div class="form-group ">
+                            <label for="authPassword ">Passwort</label>
+                            <input type="password " class="form-control " id="authPassword " placeholder="Passwort ">
                         </div>
                     </form>
-                    <button id="logInButton" onclick="authView.runLogin();">Anmelden</button>
+                    <button id="logInButton " onclick="authView.runLogin(); ">Anmelden</button>
                 </div>
             </div>
         </div>
 
 
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="js/lib/jquery-3.5.1.min.js"></script>
-        <script src="js/lib/popper.min.js"></script>
-        <script src="js/lib/bootstrap.min.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-database.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-auth.js"></script>
+        <script src="js/lib/jquery-3.5.1.min.js "></script>
+        <script src="js/lib/popper.min.js "></script>
+        <script src="js/lib/bootstrap.min.js "></script>
+        <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-app.js "></script>
+        <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-database.js "></script>
+        <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-auth.js "></script>
 
         <!-- custom javascript -->
         <!-- call first to initalize firebase-->
-        <script src="js/storageService.js"></script>
-        <script src="js/authService.js"></script>
-        <script src="js/geolocationService.js"></script>
-        <script src="js/geolocationView.js"></script>
-        <script src="js/itemView.js"></script>
-        <script src="js/authView.js"></script>
-        <script src="js/audioView.js"></script>
-        <script src="js/index.js"></script>
+        <script src="js/storageService.js "></script>
+        <script src="js/fileService.js "></script>
+        <script src="js/authService.js "></script>
+        <script src="js/geolocationService.js "></script>
+        <script src="js/geolocationView.js "></script>
+        <script src="js/itemView.js "></script>
+        <script src="js/authView.js "></script>
+        <script src="js/audioView.js "></script>
+        <script src="js/index.js "></script>
         <!-- generated on the fly. as last include to make sure app-specific javascript is prepared -->
-        <script src="cordova.js"></script>
+        <script src="cordova.js "></script>
 
 
     </body>
