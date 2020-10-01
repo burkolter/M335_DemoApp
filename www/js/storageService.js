@@ -36,16 +36,21 @@ var storageService = (function() {
         console.log("path deleted: " + path);
     };
 
+
+    const mapChildSnapshotToObject = function(item, childSnapshot) {
+        var childKey = childSnapshot.key;
+        var childData = childSnapshot.val();
+
+        // create object with named properties
+        item[childKey] = childData;
+    }
+
     const mapSnapshotToObject = function(snapshot) {
         // default response if branch is empty
         var item = {};
 
         snapshot.forEach(function(childSnapshot) {
-            var childKey = childSnapshot.key;
-            var childData = childSnapshot.val();
-
-            // create object with named properties
-            item[childKey] = childData;
+            mapChildSnapshotToObject(item, childSnapshot);
         })
 
         return item;
@@ -67,7 +72,34 @@ var storageService = (function() {
         });
     };
 
+
     const unsubscribeItem = function(path) {
+        let ref = dbObj.ref(path);
+        ref.off();
+    }
+
+    const subscribeList = function(path, changeCallback) {
+        let ref = dbObj.ref(path);
+
+        ref.on('child_added', function(childSnapshot, prevChildKey) {
+            let obj = {};
+            mapChildSnapshotToObject(obj, childSnapshot);
+            changeCallback("child_added", obj, prevChildKey);
+        });
+
+        ref.on('child_removed', function(oldChildSnapshot) {
+            // only key available
+            changeCallback("child_removed", obj.key);
+        });
+
+        ref.on('child_changed', function(childSnapshot, prevChildKey) {
+            let obj = {};
+            mapChildSnapshotToObject(obj, childSnapshot);
+            changeCallback("child_changed", obj, prevChildKey);
+        });
+    };
+
+    const unsubscribeList = function(path) {
         let ref = dbObj.ref(path);
         ref.off();
     }
@@ -93,6 +125,8 @@ var storageService = (function() {
         readItems,
         removePath,
         subscribeItem,
-        unsubscribeItem
+        unsubscribeItem,
+        subscribeList,
+        unsubscribeList
     };
 })();

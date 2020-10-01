@@ -1,6 +1,8 @@
 var itemView = (function() {
 
     const fixedPath = '/demo/fixedpath/item';
+    const listPath = '/demo/list/';
+
     const writeFixedPath = function() {
         storageService.writeItem(fixedPath, {
             id: 1,
@@ -16,8 +18,16 @@ var itemView = (function() {
         });
     }
 
+    const subscribeListPath = function() {
+        storageService.subscribeList(listPath, (action, obj) => {
+            console.log("update received: " + action, obj);
+        });
+    }
+
     // init
     subscribeFixedPath();
+    subscribeListPath();
+
 
     // public
     return {
