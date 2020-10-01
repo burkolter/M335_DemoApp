@@ -3,10 +3,16 @@ var geolocationView = (function() {
     const updateInitPosition = function() {
         geolocationService.getPosition()
             .then((location) => {
-                document.getElementById("coordsInit").innerText = location.coords.latitude + " / " + location.coords.longitude;
+                let elem = document.getElementById("coordsInit");
+                if (elem) {
+                    elem.innerText = location.coords.latitude + " / " + location.coords.longitude;
+                }
             })
             .catch((error) => {
-                document.getElementById("coordsInit").innerText = "(failure)";
+                let elem = document.getElementById("coordsInit");
+                if (elem) {
+                    elem.innerText = "(failure)";
+                }
             })
     }
 

@@ -14,7 +14,9 @@ var itemView = (function() {
         storageService.subscribeItem(fixedPath, (item) => {
             console.log("update received", item);
             let updateTarget = document.getElementById("updateTarget");
-            updateTarget.innerText = item.ts;
+            if (updateTarget) {
+                updateTarget.innerText = item.ts;
+            }
         });
     }
 

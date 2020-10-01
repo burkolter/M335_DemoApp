@@ -1,7 +1,4 @@
 var fileService = (function() {
-
-
-
     const createFile = function(fileName) {
         window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fs) {
 
